@@ -23,3 +23,6 @@ kubectl create deployment myjenkins --image=jenkins:myjenkins
 ### direnty run image in docker
  docker run --name jenkins --rm -p 8080:8080 --env JENKINS_ADMIN_ID=admin --env JENKINS_ADMIN_PASSWORD=password jenkins:myjenkins
 
+## Operational Consideration
+For operational stabilty its good to run jenkins with multiple master nodes.
+And have agents asssigned dyamically running in containerized environment.
