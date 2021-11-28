@@ -28,7 +28,7 @@ unclassified:
             git:
               credentialsId: "GitHubToken"
               id: "15787d1a-8606-4089-8c51-45d391e5e6b2"
-              remote: "https://github.com/mcarajatchawla/JenkinsTest.git"
+              remote: "https://github.com/mcarajatchawla/JenkinsConfigAsCode.git"
               traits:
               - "gitBranchDiscovery"
 credentials:
