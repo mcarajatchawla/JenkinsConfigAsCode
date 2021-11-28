@@ -1,0 +1,53 @@
+jenkins:
+  securityRealm:
+    local:
+      allowsSignup: false
+      users:
+       - id: ${JENKINS_ADMIN_ID}
+         password: ${JENKINS_ADMIN_PASSWORD}
+  authorizationStrategy:
+    globalMatrix:
+      permissions:
+        - "Overall/Administer:admin"
+        - "Overall/Read:authenticated"
+  remotingSecurity:
+    enabled: true
+security:
+  queueItemAuthenticator:
+    authenticators:
+    - global:
+        strategy: triggeringUsersAuthorizationStrategy
+unclassified:
+  globalLibraries:
+    libraries:
+    - defaultVersion: "master"
+      name: "SharedLib"
+      retriever:
+        modernSCM:
+          scm:
+            git:
+              credentialsId: "GitHubToken"
+              id: "15787d1a-8606-4089-8c51-45d391e5e6b2"
+              remote: "https://github.com/mcarajatchawla/JenkinsTest.git"
+              traits:
+              - "gitBranchDiscovery"
+credentials:
+  system:
+    domainCredentials:
+    - credentials:
+      - usernamePassword:
+          id: "testid"
+          password: "test"
+          scope: GLOBAL
+          username: "teset"
+      - usernamePassword:
+          id: "GitHubToken"
+          password: "test"
+          scope: GLOBAL
+          username: "mcarajatchawla"
+      - string:
+          id: "sonartoken"
+          scope: GLOBAL
+          secret: "test"
+jobs:
+  - file: /usr/share/jenkins/ref/BuildPipelineDSL.groovy
